@@ -1,0 +1,323 @@
+% geomdif_res.defs.sty
+% 
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% ----------- DEFINICIONES ---------------------------------------------------
+
+% ################ LISTAS ####################################################
+%***********************************************************
+% Lista: apartado
+% ***********************************************************
+% Esta lista está definida de forma diferente en el nivel de hojas de
+% ejercicios y de exámenes:
+% Se redefine 'subejercicio' como nivel superior, para que en los ejercicios
+% resueltos no sea necesario un nivel superior 'ejercicio',
+% mientras que en las hojas de ejercicios y en las de exámenes sí.
+%
+% Esta lista añade apartados a), b), ... sin necesidad de un ítem principal.
+% Se utiliza en el enunciado de los ejercicios resueltos
+\newcounter{isubejercicio}
+\newenvironment{subejercicio}
+{\begin{list}{\textbf{\alph{isubejercicio})}}
+{
+\topsep 2pt \parskip 0pt \itemsep 0pt \parsep 0pt \usecounter{isubejercicio}}}
+{\end{list}}
+
+% ***********************************************************
+% Lista: soluc
+% ***********************************************************
+% Funciona como la anterior, pero escribe los apartados sin indentación,
+% de manera que hay más espacio para resolver el ejercicio.
+\newcounter{isoluc}
+\newenvironment{soluc}
+{\begin{list}{\textbf{\alph{isoluc})}}
+{
+\setlength{\leftmargin}{0pt}
+\topsep=0pt \parskip=0pt \itemsep=0pt \parsep=0pt \usecounter{isoluc}}}
+{\end{list}}
+% ----------------------------------------------------------------------------
+
+% ################ COLORES ###################################################
+%
+\newcommand{\paleYellow}{yellow!20!white}
+\newcommand{\ejercicioGreen}{green!25!white}
+\newcommand{\ejercicioGray}{black!10!white}
+\newcommand{\greendark}{green!40!black}
+\newcommand{\bordeEjercicioGreen}{green!70!black}
+\newcommand{\bordeEjercicioGray}{black!70!black}
+\newcommand{\commentColor}{gray!80!black}
+\newcommand{\tableGray}{gray!50}
+\newcommand{\tableYellow}{yellow!15}
+
+% COLORES
+% Punto exterior fijo
+\def\pcolor{black}
+\def\nocolor{white}
+% \def\nocolor{green!80!black}
+% Vértice (punto de interacción)
+\def\icolor{red}
+% Arrow color (symmetry factor)
+\def\acolor{green!60!black}
+% Elementos sin foco
+\def\nofoco{black!30}
+
+% Color rojo en texto y en fórmula con el objetivo de destacar un error
+\newcommand{\errcolor}{red!80!black}
+% Color verde en texto y en fórmula con el objetivo de destacar un texto
+\newcommand{\infocolor}{green!55!black}
+% Color amarillo de los fondos de imágenes
+\newcommand{\bgcolor}{yellow!15}
+% Borde gris de los marcos de fondos de imágenes
+\newcommand{\bgbordercolor}{black!10}
+% Marcas de agua
+\newcommand{\marcaagua}{black!9}
+
+
+% ################ VARIABLES #################################################
+%
+%\newcommand{\materia}{EJERCICIOS DE TECNOLOGÍA ELÉCTRICA}
+\newcommand{\acad}{}
+%\newcommand{\dept}{UPCT}
+%\newcommand{\exercises}{Ejercicios de Tecnología Eléctrica}
+\newcommand*{\bloque}{}
+\newcommand*{\mainsubject}{}
+\newcommand*{\parte}{\ }
+\newcommand*{\hoja}{}
+\newcommand*{\tipoBloque}{}
+\newcommand*{\ejBloque}{}
+\newcommand*{\ejHoja}{}
+\newcommand*{\ejExamen}{}
+\newcommand*{\fuente}{}
+
+% ################ MARCAS DE AGUA ############################################
+% MARCAS DE AGUA
+%\SetWatermarkText{\textsf{BORRADOR}}
+%\SetWatermarkScale{1}
+%\SetWatermarkColor{\marcaagua}
+%\SetWatermarkAngle{55}
+
+% ################ TIKZ ######################################################
+%
+% Extrae coordenadas x e y de la coordenada pasada como parámetro
+% Por ejemplo:
+% \ExtractCoordinate{D}
+% .... (\XCoord,0) .....
+\newdimen\XCoord
+\newdimen\YCoord
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+
+% ################ CAJAS #####################################################
+%
+\tcbset{colback=yellow!20}
+%
+\newtcolorbox{qboxshort}
+{skin=enhanced,frame hidden,top=2pt,bottom=2pt,left=2pt,right=2pt,
+  colback=\ejercicioGreen,fonttitle=\normalsize,borderline={0.5pt}{1pt}
+    {\bordeEjercicioGreen},enlarge right by=0cm}
+%
+  \newtcolorbox{solutionbox}[1]
+  {colback=yellow!10, colframe=orange!90!gray, fonttitle=\normalsize,
+    title=#1,coltitle=black}
+%
+  \newtcolorbox{solbox}
+  {skin=enhanced,frame hidden,colback=yellow!20,fonttitle=\normalsize,
+    borderline={0.5pt}{1pt}{yellow!40!black}}
+  \newtcolorbox{qboxlong}{skin=enhanced,frame hidden,top=2pt,bottom=2pt,
+    left=2pt,right=2pt,colback=\ejercicioGray,fonttitle=\normalsize,
+      borderline={0.5pt}{1pt}{\bordeEjercicioGray},enlarge right by=0cm}
+%
+\newtcolorbox{cutebox}[2][]{enhanced,
+  before skip=2mm,after skip=2mm,
+  colback=black!5,colframe=black!50,boxrule=0.2mm,
+  attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+  varwidth boxed title*=-3cm,
+  boxed title style={frame code={
+      \path[fill=tcbcolback!30!black]
+      ([yshift=-1mm,xshift=-1mm]frame.north west)
+      arc[start angle=0,end angle=180,radius=1mm]
+      ([yshift=-1mm,xshift=1mm]frame.north east)
+      arc[start angle=180,end angle=0,radius=1mm];
+      \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+      middle color=tcbcolback!80!black]
+      ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+      [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+      -- (frame.south east) -- (frame.south west)
+      -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+      [sharp corners]-- cycle;
+    },interior engine=empty,
+  },
+  fonttitle=\bfseries,
+  title={#2},#1
+}
+
+% ################ CAJAS #####################################################
+% Tachar elementos en ecuaciones:
+%
+\newcommand{\cancelout}[1]{%
+\tikz[baseline=(tocancel.base)]{
+	\node[inner sep=1pt,outer sep=0pt] (tocancel) {$#1$};
+	\draw[red] (tocancel.south west) -- (tocancel.north east);
+}%
+}%
+%
+\newcommand{\canceloutcolor}[2]{%
+\tikz[baseline=(tocancel.base)]{
+	\node[inner sep=1pt,outer sep=0pt] (tocancel) {$#2$};
+	\draw[#1] (tocancel.south west) -- (tocancel.north east);
+}%
+}%
+
+
+% ################ ESTILOS DE PÁGINA #########################################
+%***********************************************************
+% Estilo: fancy
+% ***********************************************************
+% Todas las páginas utilizan el estilo 'fancy' definido a continuación:
+\pagestyle{fancy}
+
+% Cabecera
+\fancyhead[L] {%
+	{\footnotesize\ttfamily
+		{\parte}\\[2pt]
+		{Fuente: \fuente}\\
+		{Bloque \bloque - \mainsubject}
+	}
+}
+
+\fancyhead[C]{%
+	{\footnotesize\ttfamily
+		{\ }\\[2pt]
+		{\ }\\
+		{\ }
+	}
+}
+
+\fancyhead[RO]{%
+	{\footnotesize\ttfamily
+		{\today }\\[2pt]
+		{\ }\\
+		{Hoja \bloque-\hoja. \tipoBloque\ \ejBloque}
+	}
+}
+
+% Pie
+\fancyfoot[C]{--\thepage--}
+%\fancyfoot[R]{{\includegraphics[width=0.4cm]{../../img/logo/cat2.png}}}
+
+% Línea que separa la cabecera y el pie del texto:
+\renewcommand{\footrulewidth}{0.5pt}
+%\rfoot{%
+%  \vspace*{1ex}
+%}
+
+% Hay que documentar este código
+% 'ejercicio', 'examen' o 'resuelto'
+\newcommand*{\tipoDocumento}{resuelto}
+
+\newcommand*{\puntExam}[1]{%
+  \ifthenelse{\equal{\tipoDocumento}{examen}}{#1}{}
+}
+
+
+%% ----------- MACROS -------------------------------------------------
+% Vectores
+\newcommand*{\vvv}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\vec{#1}}
+  %\ensuremath{\kern1.2pt\mathbf{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Vectores representados por letras griegas
+\newcommand*{\vvvg}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\vec{#1}}
+  %\ensuremath{\kern1.2pt\pmb{#1}}
+  %\ensuremath{\kern1.2pt\boldsymbol{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Matrices
+\newcommand*{\mmm}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\operatorname{#1}}
+  %\ensuremath{\kern1.2pt\mathbf{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Matrices representadas por letras griegas
+\newcommand*{\mmmg}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{#1}
+  %\ensuremath{{\kern1.2pt\boldsymbol{#1}}}
+  \ensuremath{{\kern1.2pt\symbf{#1}}}
+}
+
+% Producto vectorial
+\newcommand{\prodvec}{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\wedge}
+  \ensuremath{\times}
+}
+
+\newcommand{\transp}{%
+  \ensuremath{{\top}}
+}
+
+\newcommand{\xhat}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\kern5.2pt\pmb{{\kern-0.5em\hat{\mathrm{#1}}}}}
+  %\ensuremath{\kern1.2pt\pmb{\hat{#1}}}
+  \ensuremath{\kern1.2pt\symbf{\hat{#1}}}
+}
+
+% Parte real e imaginaria
+%\renewcommand{\Re}{\operatorname{Re}}
+%\renewcommand{\Im}{\operatorname{Im}}
+
+
+% ------------------ CÓDIGO EN CUARENTENA ------------------------------------
+%\tikzset{
+%cstr/.pic={
+%  code={
+%  \draw[rounded corners=8pt,very thick] (0,0) rectangle (3,3);
+%  % Nivel líquido
+%  \draw (0,2) -- (3,2);
+%  % Palas
+%  \draw[thick] (1.60,0.70) arc[start angle=0,end angle=180,x radius=3mm,y radius=0.9mm];
+%  \draw[thick] (1.60,0.70) arc[start angle=0,end angle=-180,x radius=3mm,y radius=0.9mm];
+%  \draw[thick] (0.40,0.70) arc[start angle=180,end angle=0,x radius=3mm,y radius=0.9mm];
+%  \draw[thick] (0.40,0.70) arc[start angle=-180, end angle=0,x radius=3mm,y radius=0.9mm];
+%  % Mango
+%  \draw (1,0.70) -- (65:4.5);
+%  \fill[fill=red,draw=black] (1,0.70) circle[radius=2pt];
+%  % Entrada
+%  \fill (0.70,2) circle[radius=2pt];
+%  %\draw[thick] (0.70,2) -- (0.7,3.5);
+%  %\draw[thick] (0.70,2) -- (0.7,3.5) -- (-1.3,3.5);
+%  % Salida
+%  \fill (3,0.70) circle[radius=2.2pt];
+%  %\draw[thick] (3.0,0.70) -- (5.0,0.70);
+%}
+%}}
+%
+%\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}%
+%\newcolumntype{Z}{>{\centering\arraybackslash}X}%
+%\newcolumntype{a}{>{\columncolor{gray!50}}c}%
+%
+
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+% Ejemplos:
+% \[\Scale[0.5]{y=\sin^2 x}\]
+% \[\Resize{1cm}{y=\sin^2 x}\]
+
+
+
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% End:
+

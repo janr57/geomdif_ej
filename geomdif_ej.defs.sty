@@ -1,0 +1,164 @@
+% geomdif_ej.defs.sty
+% 
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+%% ----------------------------------------------------------------------------
+
+%% \newcommand{\Titulo}{}
+\newcommand{\mainsubject}{}
+% \newcounter{isheet}[chapter]
+\newcounter{isheet}
+\newcounter{isubsheet}
+\newcounter{exam}
+%% \newcommand{\TituloPrincipal}{}
+%% ----------------------------------------------------------------------------
+\newcommand{\materia}{EJERCICIOS DE ELECTRODINÁMICA CLÁSICA}
+\newcommand*{\parte}{MATEMÁTICAS}
+% \newcommand{\webroot}{http:///serbal.pntic.mec.es/jnavar13/b2qui/ejercicios}
+%% ----------------------------------------------------------------------------
+\newcommand{\paleYellow}{yellow!20!white}
+\newcommand{\ejercicioGreen}{white!25!white}
+\newcommand{\colorSolved}{gray}
+\newcommand{\colorItemSolved}{blue!70!black}
+\newcommand{\colorSolvedText}{black}
+% ----------------------------------------------------------------------------
+\newcommand{\cancelout}[1]{%
+  \tikz[baseline=(tocancel.base)]{%
+    \node[inner sep=1pt,outer sep=0pt] (tocancel) {$#1$}; \draw[red]
+    (tocancel.south west) -- (tocancel.north east); } }
+% ----------------------------------------------------------------------------
+\newcommand{\showSolved}[2]{%
+  \href{run:#1/#2}{\color{\colorSolved}{\footnotesize [Resuelto]}} }
+
+\newcommand{\showSolvedText}[3]{%
+  \href{run:#1/#2}{#3} }
+% ----------------------------------------------------------------------------
+%
+% ***********************************************************
+% ***********************************************************
+% Exercise list definitions: ejercicio and subejercicio
+% ***********************************************************
+\newcounter{iejercicio} \newcounter{isubejercicio}[iejercicio]
+\newenvironment{ejercicio} {\begin{list}{\textbf{\arabic{iejercicio}.-}} {
+      \parsep 0pt \usecounter{iejercicio}}} {\end{list}\par}
+\newenvironment{subejercicio} {\begin{list}{\textbf{\alph{isubejercicio})}}
+    {\topsep 0pt \parskip 0 pt \itemsep 0pt \parsep 0pt \leftmargin 1.5em
+      \usecounter{isubejercicio}}} {\end{list}}
+
+%% ********* Header and footer ***************************************
+\pagestyle{fancy}
+\fancyhead[L] {%
+  {\ttfamily \small {\parte}\\
+    {Bloque~\theisheet.-\ \mainsubject.}}}
+%\fancyhead[C]{%
+%  {\ttfamily \small {\acad }\\}}
+%\fancyhead[R]{%
+%  {\ttfamily \small {Hoja \theisheet-\theisubsheet}}}
+%\fancyfoot[C]{--\thepage--} \fancyfoot[R]{\Cat}
+
+\renewcommand{\footrulewidth}{0.5pt}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\fancypagestyle{ejercicios}{%
+  \fancyhead[L] { {\ttfamily \small
+      {\parte}\\
+      {Bloque~\theisheet.-\ \mainsubject.}}}
+  %\fancyhead[C]{%
+  %  {\ttfamily \small {\acad }\\}}
+  \fancyhead[R]{%
+    {\ttfamily \small
+      {Hoja p\theisheet-\theisubsheet}}}
+  %\fancyfoot[C]{--\thepage--} \fancyfoot[R]{\Cat}
+}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\renewcommand{\footrulewidth}{0.5pt}
+%
+%% ----------- MACROS ------------------------------------------------- Se
+% Vectores
+\newcommand*{\vvv}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\vec{#1}}
+  %\ensuremath{\kern1.2pt\mathbf{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Vectores representados por letras griegas
+\newcommand*{\vvvg}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\vec{#1}}
+  %\ensuremath{\kern1.2pt\pmb{#1}}
+  %\ensuremath{\kern1.2pt\boldsymbol{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Matrices
+\newcommand*{\mmm}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\operatorname{#1}}
+  %\ensuremath{\kern1.2pt\mathbf{#1}}
+  \ensuremath{\kern1.2pt\symbf{#1}}
+}
+
+% Matrices representadas por letras griegas
+\newcommand*{\mmmg}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{#1}
+  %\ensuremath{{\kern1.2pt\boldsymbol{#1}}}
+  \ensuremath{{\kern1.2pt\symbf{#1}}}
+}
+
+% Producto vectorial
+\newcommand{\prodvec}{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\wedge}
+  \ensuremath{\times}
+}
+
+\newcommand{\transp}{%
+  \ensuremath{{\top}}
+}
+
+\newcommand{\xhat}[1]{%
+  % Actívese sólo una de las dos opciones
+  %\ensuremath{\kern5.2pt\pmb{{\kern-0.5em\hat{\mathrm{#1}}}}}
+  %\ensuremath{\kern1.2pt\pmb{\hat{#1}}}
+  \ensuremath{\kern1.2pt\symbf{\hat{#1}}}
+}
+
+% Parte real e imaginaria
+%\renewcommand{\Re}{\operatorname{Re}}
+%\renewcommand{\Im}{\operatorname{Im}}
+
+\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}
+      {\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}
+      {\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+
+%% --------------------------------------------------------------------
+%% \includeonly{ ejercicios/telec-ej-portada, ejercicios/telec-ej_tema_1.tex }
+%
+
+\hypersetup{
+  pdftitle={Ejercicios de Electrodinámica Clásica},
+  pdfauthor={José A. Navarro Ramón},
+  pdfsubject={Problemas de Electrodinámica Clásica},
+  pdfkeywords={electrodinámica,electrostática,magnetismo,ejercicios,problemas}
+}
+
+
+% Hay que documentar este código
+% 'cuestión', 'problema' o 'examen'
+% Por defecto 'ejercicio'
+\newcommand*{\tipoDocumento}{ejercicio}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: "geomdif_ej.tex"
+%%% End:

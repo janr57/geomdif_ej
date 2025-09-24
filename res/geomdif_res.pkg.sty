@@ -1,0 +1,259 @@
+% geomdif_res-pkg.sty
+% 
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% ----------- PAQUETES Y SU CONFIGURACIÓN -------------------------------------
+% *****************************************************************************
+% DIMENSIONES DEL PAPEL EN EL FICHERO PDF FINAL
+%
+% IMPORTANTE:
+% 'geometry' no detecta a luatex por defecto
+% y no especifica el tamaño al lector de pdf.
+% El siguiente código es necesario si se utiliza el paquete 'geometry'
+% porque no detecta el motor 'luatex', ni las medidas de papel que le manda.
+% Si se activara 'geometry', habrá que desactivar el formato de papel incluído
+% al final de este fichero, y cargar el paquete siguiente:
+\RequirePackage{luatex85}
+% En caso de que diera problemas el paquete anterior, este comando mandaría las
+% dimensiones correctas:
+\special{papersize=210mm,297mm}
+% *****************************************************************************
+% Fuentes 
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{relsize}
+
+\RequirePackage{lualatex-math}
+
+\RequirePackage{fontspec}
+\RequirePackage[math-style=TeX]{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\RequirePackage{lualatex-math}
+% ---------------------------------------------
+% Idioma
+\RequirePackage{polyglossia}
+\setmainlanguage{spanish}
+\RequirePackage{microtype}
+
+% ---------------------------------------------
+% Tipos de letra
+%% -------
+% Main font
+\setmainfont{XITS}
+%\setmainfont{Linux Libertine O}
+% -------
+% Sans font
+\setsansfont{Linux Biolinum O}
+% -------
+% Mono font
+\setmonofont{InconsolataN-Regular}
+%\setmonofont[Scale=MatchLowercase]{Inconsolata}
+% \setmonofont{Fira Mono}
+% -------
+% Math font
+% Available for 'unicode-math':
+% Latin Modern Math (1585 symbols)
+% XITS Math (2425 symbols)
+% STIX Math (2394 symbols)
+% Cambria Math (1588 symbols)
+% Asana Math (2252 symbols)
+% TeX Gyre Pagella Math (1638 symbols)
+% DejaVu Math TeX Gyre (1648 symbols)
+% Neo Euler (576 symbols)
+% \setmathfont{Asana-Math}
+\setmathfont{XITS-Math}
+
+% ---------------------------------------------
+% Permite código 'lua'
+\RequirePackage{luacode}
+% ---------------------------------------------
+% Si se activa este paquete, deberá activarse también 'luatex85' del principio
+% de este fichero, y desactivar la paginación estándar de latex del final
+% del fichero.
+%
+% PAQUETE 'geometry'
+\RequirePackage{geometry}
+% Horizontales
+\geometry{textwidth=17cm}
+\geometry{bindingoffset=5mm}
+\geometry{nomarginpar}
+%% \geometry{hmargin=15mm}
+% Verticales
+\geometry{head=44pt}
+% \geometry{top=32mm}
+\geometry{top=27mm} % Dejar así o  disminuir muy poco más la distancia.
+\geometry{headsep=4mm}
+\geometry{footskip=10mm}
+%%\geometry{bottom=45mm}
+%\geometry{textheight=24.5cm}
+\geometry{textheight=24.0cm}
+%
+% ---------------------------------------------
+% Encabezados
+% No se debe cargar \pagestyle{fancy}, hasta que no se pagine el documento.
+\RequirePackage{fancyhdr}
+\RequirePackage{fancybox}
+% --------------------------------------------------------
+% Listings
+\RequirePackage{listings}
+% --------------------------------------------------------
+\RequirePackage{braket}
+\RequirePackage{datetime}
+\RequirePackage{cancel}
+\RequirePackage{array}
+\RequirePackage{nameref}
+\RequirePackage{varwidth}
+% TODO:
+% Realizar lo que hace este paquete utilizando 'lua':
+\RequirePackage{ifthen}
+\RequirePackage{mathtools}
+%---------------------------------------------
+% Sistema de unidades
+\RequirePackage{siunitx}
+\sisetup{per-mode=reciprocal}
+\sisetup{exponent-product=\cdot}
+\sisetup{output-decimal-marker = {,}}
+\DeclareSIUnit\cv{CV}
+% Para parte angular de fasores
+\RequirePackage{steinmetz}
+% Química
+\RequirePackage[version=4]{mhchem}
+% ---------------------------------------------
+% Gráficos y colores
+\RequirePackage{graphicx}
+\RequirePackage[svgnames,table]{xcolor}
+%
+\RequirePackage{colortbl}
+\RequirePackage{tabularx}
+\RequirePackage{caption}
+\captionsetup{font=small}
+% \captionsetup{format=hang}
+%
+% Paquete gráfico
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{bending}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{calc}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{circuits}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{shadows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{intersections}
+\usetikzlibrary{plotmarks}
+%
+\RequirePackage{ifthen}
+\RequirePackage{tikz-3dplot}
+% Cajas
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+
+% Gráficas
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.16}
+% Circuitos
+% \RequirePackage[siunitx,compatibility,american,oldvoltagedirection]{circuitikz}
+%\RequirePackage[siunitx,compatibility,american]{circuitikz}
+% Símbolos
+%\RequirePackage{tikzsymbols}
+% ---------------------------------------------
+% Representar mejor el símbolo integral y otros
+\usepackage{scalerel}
+\def\stretchint#1{\vcenter{\hbox{\stretchto[440]{\displaystyle\int}{#1}}}}
+\def\scaleint#1{\vcenter{\hbox{\scaleto[3ex]{\displaystyle\int}{#1}}}}
+\def\bs{\mkern-12mu}
+% ---------------------------------------------
+% Enlaces y marcadores
+\RequirePackage[colorlinks,linkcolor=black!75,urlcolor=gray,runcolor=gray,
+plainpages=false,unicode] {hyperref}
+\RequirePackage{bookmark}
+% ---------------------------------------------
+%\RequirePackage{}
+%\RequirePackage{}
+
+
+%% ################ PAGINADO SIN PAQUETE 'geometry' ############################
+%%
+%% ------------- PAGINACIÓN ---------------------------------------------------
+%% Hay dos opciones de paginado:
+%%
+%% 1) Utilizar el paquete 'geometry': activar y configurar el código que hay
+%%    más arriba y cargar el paquete 'luatex85' desactivándolo del principio
+%%    de este fichero.
+%% 2) Utilizar el código siguiente, en cuyo caso habría que desactivar el código
+%%    del paquete 'geometry' que hay más arriba y, opcionalmente, desactivar
+%%    también el paquete 'luatex85' del principio de este fichero.
+%%
+%% Sólo debería utilizarse una de las dos opciones.
+%% Desactívese la que no se use.
+%%
+%% -------------------- MEDIDAS HORIZONTALES --------------------
+%% HP LaserJet 1300.
+%% Así, el margen especificado en '\oddsidemargin + \marginparsep' es el real.
+%% '\marginparsep' por defecto vale 7.0pt'.
+%\setlength{\hoffset}{-1in}
+%%
+%% Margen izquierdo
+%\setlength{\oddsidemargin}{20mm}
+%% Especificar en caso de poner el documento en modo 'twoside', por ejemplo,
+%% si se utiliza la clase de documento 'book'.
+%% \setlength{\evensidemargin}{20mm}
+%%
+%% Eliminar espacio de notas al margen.
+% \setlength{\marginparwidth}{0pt}
+%% Anchura del texto.
+% \setlength{\textwidth}{17cm}
+%% ------------------ MEDIDAS VERTICALES ------------------ HP LaserJet 1300.
+%% El margen especificado en '\topmargin' es ---casi--- el real.
+% \setlength{\voffset}{-22mm}
+%% Margen superior
+% \setlength{\topmargin}{14mm}
+% %\setlength{\topmargin}{16mm}
+%%
+%% Encabezado.  Para tres líneas de encabezado:
+% \setlength{\headheight}{33.5pt}
+% %
+% % \setlength{\footskip}{17.0pt}
+% \setlength{\footskip}{18.0pt}
+%% Espacio entre encabezado y texto.
+% \setlength{\headsep}{5mm}
+%% Altura del texto.
+%% \setlength{\textheight}{24cm}
+% \setlength{\textheight}{23.5cm}
+%%\setlength{\textheight}{23.0cm}
+%
+% % Paginado antiguo (que funcionaba)
+% % ---------------------------------
+%%\setlength{\marginparsep}{0pt}
+%%\setlength{\evensidemargin}{0pt}
+%%\setlength{\oddsidemargin}{0pt}
+%%\setlength{\marginparwidth}{0pt}
+%%\setlength{\textwidth}{17cm}
+%%\addtolength{\hoffset}{-0.10in}
+%%
+%%\addtolength{\voffset}{-7.0em}
+%%%\addtolength{\hoffset}{-1cm}
+%%\addtolength{\headsep}{-0.4em}
+%%\addtolength{\headheight}{56.38pt}
+%%\addtolength{\textheight}{2.5cm}
+%%%\addtolength{\textwidth}{2cm}
+%
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% End:
+
+

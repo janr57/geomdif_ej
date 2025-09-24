@@ -1,0 +1,180 @@
+% topologia.tex
+%
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% HOJA
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+%\phantomsection
+%\addcontentsline{toc}{subsection}{Hoja 1}
+\setcounter{isubsheet}{1}
+
+% Añade 'Contenidos' al índice pdf.
+% \bookmark[level=2,dest=section]{Hoja 1}
+% Nombre de enlace: 'cc1.2'
+\pdfbookmark[2]{Hoja 1}{mathj01}
+
+\begin{ejercicio}
+% --------------------------------------------------------------------------
+% Convergencia única de una sucesión de puntos en un espacio métrico
+% --------------------------------------------------------------------------
+\item
+  Suponga una sucesión convergente de puntos en un espacio métrico.
+  Demuestre que este límite es único.
+
+% ...........................................................................
+  \showSolved{res/topologia}{topologia-001.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+
+%% --------------------------------------------------------------------------
+%%  Matrices de rotación
+%% --------------------------------------------------------------------------
+%\item
+%  \begin{subejercicio}
+%  \item Pruebe que la matriz de rotación $2\times 2$
+%    \[
+%      \begin{pNiceMatrix}
+%        \overline{A}_y\\
+%        \overline{A}_z
+%      \end{pNiceMatrix}
+%      =
+%      \begin{pNiceMatrix}
+%        \cos\phi & \sin\phi\\
+%        -\sin\phi & \cos\phi
+%      \end{pNiceMatrix}
+%      \begin{pNiceMatrix}
+%        A_y\\
+%        A_z
+%      \end{pNiceMatrix}
+%    \]
+%    preserva el producto escalar. Esto es, muestre que
+%    \[
+%    \overline{A}_y\,\, \overline{B}_y + \overline{A}_z\,\, \overline{B}_z
+%    = A_y B_y + A_z B_z
+%  \]
+%\item ¿Qué restricciones deben cumplir los elementos $R_{ij}$ de la matriz
+%  de rotación en tres dimensiones
+%  \[
+%    \begin{pNiceMatrix}
+%      \overline{A}_x\\
+%      \overline{A}_y\\
+%      \overline{A}_z
+%    \end{pNiceMatrix}
+%    =
+%    \begin{pNiceMatrix}
+%      R_{xx} & R_{xy} & R_{xz}\\
+%      R_{yx} & R_{yy} & R_{yz}\\
+%      R_{zx} & R_{zy} & R_{zz}\\
+%    \end{pNiceMatrix}
+%    \begin{pNiceMatrix}
+%      A_x\\
+%      A_y\\
+%      A_z
+%    \end{pNiceMatrix}
+%  \]
+%  para que se conserve la longitud de $\vvv{A}$ (para todos los vectores $\vvv{A}$)?
+%  \end{subejercicio}
+%
+%  % ...........................................................................
+%  {\footnotesize \textcolor{gray}{[No resuelto]}}
+%  %\showSolved{res/matematicas}{matematicas-008.pdf}
+%% ...........................................................................
+%%\medskip
+%%{\color{gray}
+%%\hrule
+%%}
+%
+%% #########################################################################################
+%% #########################################################################################
+%% #########################################################################################
+%
+%\clearpage
+%% \phantomsection
+%%\addcontentsline{toc}{subsection}{Hoja 1}
+%%\setcounter{isubsheet}{2}
+%\stepcounter{isubsheet} 
+%
+%% Añade 'Contenidos' al índice pdf.
+%% \bookmark[level=2,dest=section]{Hoja 1}
+%% Nombre de enlace: 'cc1.2'
+%\pdfbookmark[2]{Hoja 2}{mathj02}
+%
+%% --------------------------------------------------------------------------
+%%  Matriz de rotación
+%% --------------------------------------------------------------------------
+%\item Encuentre la matriz de transformación $\mmm{R}$ que describa una rotación
+%  de \ang{120} alrededor de un eje que pase por el origen y por el punto $(1,1,1)$.
+%  La rotación debe ser antihoraria en cuando se observa el eje hacia el origen.
+%
+%  % ...........................................................................
+%  {\footnotesize \textcolor{gray}{[No resuelto]}}
+%  %\showSolved{res/matematicas}{matematicas-009.pdf}
+%% ...........................................................................
+%\medskip
+%{\color{gray}
+%\hrule
+%}
+%
+%  
+%  % --------------------------------------------------------------------------
+%  % Gradiente
+%  % --------------------------------------------------------------------------
+%\item Suponga que $f$ es una función de dos variables, $y$ y $z$.
+%  Demuestre que el gradiente
+%  $\vvv{\nabla} f = (\partial f/\partial y)\xhat{y} + (\partial f/\partial z)\xhat{z}$
+%  se transforma como un vector bajo rotaciones.
+%  \[
+%    \begin{pNiceMatrix}
+%      \overline{A}_y\\
+%      \overline{A}_z
+%    \end{pNiceMatrix}
+%    =
+%    \begin{pNiceMatrix}
+%      \cos\phi & \sin\phi\\
+%      -\sin\phi & \cos\phi
+%    \end{pNiceMatrix}
+%    \begin{pNiceMatrix}
+%      A_y\\
+%      A_z
+%    \end{pNiceMatrix}
+%  \]
+%  [Pista:
+%  $(\partial f/\partial\overline{y})(\partial y/\partial\overline{y})
+%  + (\partial f/\partial\overline{z}) (\partial z/\partial\overline{z})$,
+%  y la fórmula análoga para $\partial f/\partial\overline{z}$. Sabemos que
+%  $\overline{y} = y\cos\phi + z\sin\phi$ y $\overline{z} = -y\sin\phi + z\cos\phi$;
+%  ``resuelva'' estas ecuaciones para $y$ y $z$ (como funciones de $\overline{y}$ y
+%  $\overline{z}$), y calcule las derivadas intermedias $\partial y/\partial\overline{y}$,
+%  $\partial z/\partial\overline{y}$, etc.]
+%  
+%  % ...........................................................................
+%  {\footnotesize \textcolor{gray}{[No resuelto]}}
+%  % \showSolved{res/matematicas}{matematicas-014.pdf}
+%  % ...........................................................................
+%  % \medskip
+%  % {\color{gray}
+%  % \hrule
+%  % }
+  
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+ 
+  
+\end{ejercicio}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: "../geomdif_ej.tex"
+%%% End:

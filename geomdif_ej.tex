@@ -1,0 +1,56 @@
+% geomdif_ej.tex 
+% Fichero principal
+%
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+\documentclass[a4paper,10pt]{report}
+
+% Paquetes
+\usepackage{geomdif_ej.pkg}
+% Definiciones
+\usepackage{geomdif_ej.defs}
+
+\begin{document}
+% -----------------------------------------------------------------------------
+% Añade 'Portadayy' al índice pdf.
+\phantomsection \hypertarget{TOC}{}
+\bookmark[level=0,dest=TOC]{Portada}
+% Crea la portada.
+\thispagestyle{empty}
+\include{./portada/portada}
+% -----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
+% Añade 'Contenidos' al índice pdf.
+\hypertarget{Contents}{} \phantomsection
+\bookmark[level=0,dest=Contents]{Contenidos}
+% Estilo de página como 'empty' pero con número de página.
+\pagestyle{plain}
+% Crea la tabla de contenidos.
+\include{./tablacontenidos/tablacontenidos}
+% -----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
+%\part{Ejercicios}
+%
+\renewcommand*{\tipoDocumento}{ejercicios}
+\renewcommand*{\parte}{EJERCICIOS DE GEOMETRÍA DIFERENCIAL}
+% ------ Matemáticas -----------------------
+\setcounter{isheet}{1}
+\renewcommand*{\mainsubject}{Conceptos básicos de topología}
+\phantomsection \addcontentsline{toc}{section}{\theisheet. \mainsubject}
+\pagestyle{ejercicios}
+\include{./ejercicios/topologia}
+% ------ Campos ----------------------------
+%\renewcommand*{\mainsubject}{Electrostática}
+%\addtocounter{isheet}{1}
+%\phantomsection \addcontentsline{toc}{section}{\theisheet. \mainsubject}
+%\include{./ejercicios/ed-electrostatica}
+
+% -----------------------------------------------------------------------------
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:

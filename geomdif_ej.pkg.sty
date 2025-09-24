@@ -1,0 +1,155 @@
+% geomdif_ej-pkg.sty
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% ----------- PAQUETES Y SU CONFIGURACIÓN -----------------------------
+% ---------------------------------------------
+% IMPORTANTE: 'geometry' no detecta a luatex por defecto
+% y no especifica el tamaño al lector de pdf.
+\RequirePackage{luatex85}
+% Fuentes 
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{relsize}
+
+\RequirePackage{fontspec}
+\RequirePackage[math-style=TeX]{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\RequirePackage{lualatex-math}
+% ---------------------------------------------
+% Idioma
+\RequirePackage{polyglossia}
+\setmainlanguage{spanish}
+\RequirePackage{microtype}
+% ----------------------------------------------
+% Tipos de letra
+%% -------
+% Main font
+\setmainfont{XITS}
+%\setmainfont{Linux Libertine O}
+% -------
+% Sans font
+\setsansfont{Linux Biolinum O}
+% -------
+% Mono font
+\setmonofont{InconsolataN-Regular}
+%\setmonofont[Scale=MatchLowercase]{Inconsolata}
+% \setmonofont{Fira Mono}
+% -------
+% Math font
+% Available for 'unicode-math':
+% Latin Modern Math (1585 symbols)
+% XITS Math (2425 symbols)
+% STIX Math (2394 symbols)
+% Cambria Math (1588 symbols)
+% Asana Math (2252 symbols)
+% TeX Gyre Pagella Math (1638 symbols)
+% DejaVu Math TeX Gyre (1648 symbols)
+% Neo Euler (576 symbols)
+% \setmathfont{Asana-Math}
+\setmathfont{XITS-Math}
+
+% -------
+% Extra fonts
+% For date in the front matter:
+%\newfontfamily\fontPortada{Century Schoolbook L Bold}
+% --------------------------------------------------------------------
+% Para la fecha en la portada
+\newfontfamily\fontPortada{Century Schoolbook Bold}
+% ---------------------------------------------
+% Código 'lua' en los ficheros fuente
+\RequirePackage{luacode}
+% ---------------------------------------------
+% Geometría
+\RequirePackage{geometry}
+% Horizontales
+\geometry{textwidth=17cm}
+\geometry{bindingoffset=5mm}
+\geometry{nomarginpar}
+%% \geometry{hmargin=15mm}
+% Verticales
+\geometry{head=44pt}
+% \geometry{top=32mm}
+\geometry{top=27mm} % Dejar así o  disminuir muy poco más la distancia.
+\geometry{headsep=4mm}
+\geometry{footskip=12.5pt}
+%%\geometry{bottom=45mm}
+%\geometry{textheight=24.5cm}
+\geometry{textheight=25.0cm}
+%
+% ---------------------------------------------
+% Encabezados
+% No se debe cargar \pagestyle{fancy}, hasta que no se pagine el documento.
+\RequirePackage{fancyhdr}
+%---------------------------------------------
+\RequirePackage{datetime}
+\RequirePackage{cancel}
+\RequirePackage{tabularx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\captionsetup{font=small}
+%\RequirePackage{nameref}
+%---------------------------------------------
+% Sistema de unidades
+
+\RequirePackage{siunitx}
+\sisetup{per-mode=reciprocal}
+\sisetup{exponent-product=\cdot}
+\sisetup{output-decimal-marker = {,}}
+\DeclareSIUnit\cv{CV}
+% ---------------------------------------------
+%
+\RequirePackage{graphicx}
+\RequirePackage[svgnames,table]{xcolor}
+% Paquete gráfico
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{bending}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{calc}
+\usetikzlibrary{circuits}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shadows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{intersections}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{3d}
+% Cajas
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+% 3D
+\RequirePackage{tikz-3dplot}
+% Gráficas
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.15}
+% Matrices
+\RequirePackage{nicematrix}
+% Circuitos
+\RequirePackage[siunitx,american,compatibility]{circuitikz}
+% Símbolos
+\RequirePackage{tikzsymbols}
+
+% Enlaces y marcadores
+\RequirePackage[colorlinks,linkcolor=gray,urlcolor=gray,runcolor=gray,plainpages=false,unicode]{hyperref}
+\RequirePackage{bookmark}
+
+
+% ---------------------------------------------
+%\RequirePackage{}
+%\RequirePackage{}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: "geomdif_ej.tex"
+%%% End:

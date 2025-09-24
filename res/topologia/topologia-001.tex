@@ -1,0 +1,183 @@
+% topologia-001.tex
+%
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+
+% ....................................................................
+% OBSERVACIÓN: Se puede dar formato al búffer en AUCTeX con: M-x L-buff RET
+% ....................................................................
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../geomdif_res.pkg}
+\usepackage{../geomdif_res.defs}
+
+% ********************************************************************
+% ******* DEFINICIONES DE ESTE EJERCICIO *****************************
+% ********************************************************************
+% Bloques de ejercicios
+\renewcommand*{\mainsubject}{Análisis Vectorial}
+\renewcommand*{\parte}{EJERCICIOS DE GEOMETRÍA DIFERENCIAL}
+\renewcommand*{\tipoBloque}{Demostración}
+\renewcommand*{\bloque}{1}
+\renewcommand*{\hoja}{1}
+\renewcommand*{\ejBloque}{1}
+% Fuente: examen
+% \renewcommand*{\ejExamen}{1}
+\renewcommand*{\fuente}{%
+  Modern Differential Geometry for Physicists. 2nd ed. - [Chris J. Isham]
+}
+
+% *****************************************************************************
+
+\begin{document}
+% ############################ ENUNCIADO ######################################
+% Entrada en el índice del fichero 'pdf' 'enunciado.0'
+\pdfbookmark[0]{Enunciado}{enunciado}
+
+% --------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------
+\begin{qboxshort}
+  Suponga una sucesión convergente de puntos en un espacio métrico.
+  Demuestre que este límite es único.
+\end{qboxshort}
+
+% ######################### RESOLUCIÓN ###############################
+
+% ================ APARTADO a) =======================================
+% Entrada en el índice del fichero 'pdf'
+% \pdfbookmark[0]{Apartado a}{a}
+\pdfbookmark[0]{Solución}{sol}
+
+\begin{soluc}
+
+  \hspace{1em} Seguiremos un procedimiento de reducción al absurdo.
+  Supongamos que tenemos un espacio métrico $\left(X,d\right)$, y una sucesión
+  de puntos $(x_1, x_2, \cdots)$ de este espacio, que converge.
+  Supondremos que el límite al que converge no es único, sino que consta de dos
+  puntos \emph{diferentes}, $x, y\in X$. Llegaremos a la conclusión de que esto
+  es imposible, por lo que el límite, de existir, debe ser único.
+
+  \bigskip
+  % ---------cutebox --------------
+  \begin{cutebox}[colbacktitle=gray!60!green]{\large Propiedades de la métrica $d$}
+    \begin{description}
+    \item[Simétrica: ]
+      \begin{equation}\label{eq:simetrica}
+        d(x, y) = d(y, x)
+      \end{equation}
+    \item[No negatividad: ]
+      \begin{equation}
+        d(x, y) \geq 0 \text{ y } d(x, y) = 0 \text{ si y solo si } x = y
+      \end{equation}
+    \item[Desigualdad triangular: ]
+      \begin{equation}\label{eq:desigualdadtriangular}
+        d(x,y) \leq d(x,z) + d(z,y)
+      \end{equation}
+    \end{description}
+  \end{cutebox} %
+  % ---------------------------------------------------------------------------
+  
+  \medskip
+  % ---------cutebox --------------
+  \begin{cutebox}[colbacktitle=gray!60!green]
+    {\large Convergencia de sucesiones en un espacio métrico $(X,d)$}
+    Posibles definiciones:
+    \begin{itemize}
+    \item En un espacio métrico $(X, d)$, una sucesión converge a un punto
+      $x\in X$ si, para todo número real $\varepsilon > 0$, existe un entero
+      positivo $n_0$ tal que, para $n > n_0$, se cumple
+      \[
+        d(x_n, y) < \varepsilon
+      \]
+      El parámetro $\varepsilon$ representa un nivel de \emph{cercanía}, e
+      implica que, a partir de cierto número de términos, todos los puntos
+      se encuentran tan cerca como queramos del límite.
+      
+    \item En un espacio métrico $(X, d)$, una sucesión converge a un punto
+      $x\in X$ si, para todo número real $\varepsilon > 0$, existe un entero
+      positivo $n_0$ tal que, para $n > n_0$, se cumple que estos puntos se
+      encuentran en la bola abierta $B_{\varepsilon}(x)$
+      \[
+        x_n \in B_{\varepsilon}(x)
+      \]
+      donde la bola abierta de $x$ se define como
+      \[
+        B_{\varepsilon}(x) := \Set{x'\in X | d(x', x) < \varepsilon}
+      \]
+      
+    \item En un espacio métrico $(X, d)$, una sucesión converge a un punto
+      $x\in X$ si, para todo número real $\varepsilon > 0$, existe un entero
+      positivo $n_0$ tal que, a partir de $n > n_0$, se cumple que la cola de
+      la sucesión está incluida en la bola abierta $B_{\varepsilon}(x)$
+      \[
+        T_n \subset B_{\varepsilon}(x)
+      \]
+      donde la cola se define como $T_n := \set{x_k | k > n}$.
+   \end{itemize}
+  \end{cutebox} %
+  % ---------------------------------------------------------------------------
+
+  \medskip
+  \begin{itemize}
+  \item Como la sucesión converge a $x\in X$, podemos afirmar que para
+    todo real $\varepsilon > 0$, existe un entero positivo $n_{01}$ de forma
+    que para $n > n_{01}$
+    \begin{equation}\label{eq:dx}
+      d(x_n, x) < \varepsilon
+    \end{equation}
+  \item Según nuestra suposición, entonces la sucesión también converge a
+    $y \in X$, para todo real $\varepsilon > 0$, existe un $n_{11}$ de manera
+    que para $n > n_{11}$
+    \begin{equation}\label{eq:dy}
+      d(x_n, y) < \varepsilon
+    \end{equation}    
+  \end{itemize}
+
+  Podemos utilizar el hecho de que $x$ e $y$ son dos puntos diferentes de $X$,
+  para elegir un valor de $\varepsilon$. Tomamos su valor como la mitad de la
+  distancia entre $x$ e $y$
+  \begin{equation}\label{eq:dxy}
+    \varepsilon = \dfrac{d(x,y)}{2}
+  \end{equation}
+
+  Tomamos como $n_0$ el mayor de los valores $n_{01}$ y $n_{11}$, para
+  asegurarnos de que, cuando $n > \text{máx}(n_{01}, n_{11})$, los valores $x_n$
+  cumplen las desigualdades \eqref{eq:dx} y \eqref{eq:dy}.
+  
+  Ahora aplicamos la desigualdad triangular \eqref{eq:desigualdadtriangular}
+  y la simétrica \eqref{eq:simetrica}
+  \[
+    d(x, y) \leq d(x, x_n) + d(x_n, y) = d(x_n, x) + d(x_n, y)
+  \]
+
+  Según \eqref{eq:dx} deducimos que $d(x,y) = 2\,\varepsilon$
+  \[
+    2\varepsilon \leq d(x_n, x) + d(x_n, y)
+  \]
+
+  Ahora aplicamos \eqref{eq:dx} y \eqref{eq:dy}
+  \[
+    2\,\varepsilon < \varepsilon + \varepsilon
+  \]
+  
+  Lo que nos lleva a una contradicción
+  \[
+    \varepsilon < \varepsilon
+  \]
+
+  Por reducción al absurdo se llega a que el límite, de existir, debe ser
+  único.
+  
+\end{soluc}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:
+

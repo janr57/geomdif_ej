@@ -1,0 +1,92 @@
+% portada.tex
+%
+% Copyright (C) 2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% Portada del libro
+\begin{tikzpicture}[remember picture, overlay]
+
+% Coordenadas del punto central de la página a la altura donde irá la barra
+\coordinate [below=6.5cm] (midpoint) at (current page.north);
+
+% Barra superior
+\node [name = colourbar,
+anchor = base,
+fill = orange!80!white,
+text = black,
+minimum width = \paperwidth,
+minimum height = 1cm] at (midpoint)
+{\hspace*{5cm}\LARGE{\textmd{\textsc{MATEMÁTICAS PARA LA FÍSICA}}}};
+%{\hspace*{5cm}\LARGE{\textmd{\textsc{UNIVERSIDAD POLITÉCNICA DE CARTAGENA}}}};
+
+% Set coordinate system origin
+% Upper colour
+\begin{scope}[shift=(colourbar.north west)]
+\filldraw[fill=gray!15!white] (0,0) rectangle (current page.north east);
+\end{scope}
+
+% Set coordinate system origin
+% Bottom colour
+\begin{scope}[shift=(colourbar.south west)]
+\filldraw[fill=white!20!white] (0,0) rectangle (current page.south east);
+%\node[text=black]
+%	at (15.6,-15) {\Huge\textbf{TEMAS 7, 8 y 9.}};
+\end{scope}
+
+% Define the point where the logo will go
+\coordinate[right=4cm] (logo) at (colourbar.west);
+
+% Set coordinate system origin
+% The whole logo structure and the title image
+\begin{scope}[shift=(logo)]
+% Draw the two circles
+\filldraw[circular drop shadow={shadow scale=1.003},
+	fill=yellow!8,draw=black,thick]
+	(0.0,0.00) circle (1.9cm);
+\filldraw[fill=yellow!8,draw=black] (0.0,0.00) circle (1.48cm);
+
+% IES
+\path [postaction={decoration={text along path, text={CURSO DE},
+	text align=fit to path}, decorate}]
+	(140:1.55cm) arc (140:40:1.55cm);
+% MARIANO
+%\path [postaction={decoration={text along path, text={EJERCICIOS},
+%	text align=fit to path}, decorate}]
+%	(200:1.81cm) arc (200:265:1.81cm);
+\path [postaction={decoration={text along path, text={F{Í}SICA},
+	text align=fit to path}, decorate}]
+	(190:1.81cm) arc (190:260:1.81cm);
+% BAQUERO
+\path [postaction={decoration={text along path, text={TE{Ó}RICA},
+	text align=fit to path}, decorate}]
+	(270:1.81cm) arc (270:350:1.81cm);
+% Left star
+\node[star,draw=black!70!white,fill=gray,
+	minimum size=2mm,star point ratio=2.5,
+	inner sep=0pt,rotate=-15] at (155:1.68cm) {};
+% Right star
+\node[star,draw=black!70!white,fill=gray,
+	fill=black,minimum size=2mm,star point ratio=2.5,
+	inner sep=0pt,rotate=15] at (25:1.68cm) {};
+% Logo del IES Mariano Baquero
+\node[yshift=0.6em] {\includegraphics[width=2.5cm]
+	{img/logo/cat2.png}};
+%\node[yshift=0.6em] {\includegraphics[width=3.0cm]
+%	{img/logo/logoiesmb-100x55}};
+
+\node[yshift=-9.8cm,xshift=+6.4cm] {\includegraphics[width=17cm]
+  {img/titulo/geomdif_ej-orange.eps}};
+
+\node[yshift=-13.2cm,xshift=+11.9cm] {\large\fontPortada\sl\today --\currenttime};
+
+\end{scope}
+
+
+\end{tikzpicture}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: "../geomdif_ej.tex"
+%%% End:
